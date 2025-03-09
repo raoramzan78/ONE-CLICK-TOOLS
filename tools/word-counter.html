@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - Multi-Tools</title>
+    <meta name="description" content="Count the number of words, characters, and sentences in your text with our free online Word Counter tool.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically -->
+    <div id="header-placeholder"></div>
+
+    <main class="container py-4">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Tool Container -->
+                <div class="tool-container">
+                    <!-- Tool Header -->
+                    <div class="tool-header">
+                        <h1><i class="fas fa-calculator me-2"></i> Word Counter</h1>
+                        <p class="tool-description">Count the number of words, characters, and sentences in your text. This tool provides instant statistics as you type.</p>
+                    </div>
+
+                    <!-- Tool Content -->
+                    <div class="tool-content">
+                        <div class="mb-4">
+                            <label for="text-input" class="form-label">Enter or paste your text below:</label>
+                            <textarea id="text-input" class="form-control" rows="10" placeholder="Type or paste your text here..."></textarea>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="results p-3 bg-light rounded mb-4">
+                            <div class="row text-center">
+                                <div class="col-md-3 mb-3 mb-md-0">
+                                    <div class="result-item">
+                                        <h5>Words</h5>
+                                        <p id="word-count" class="fs-4 mb-0">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3 mb-md-0">
+                                    <div class="result-item">
+                                        <h5>Characters</h5>
+                                        <p id="character-count" class="fs-4 mb-0">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3 mb-md-0">
+                                    <div class="result-item">
+                                        <h5>Characters (no spaces)</h5>
+                                        <p id="character-no-spaces-count" class="fs-4 mb-0">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="result-item">
+                                        <h5>Sentences</h5>
+                                        <p id="sentence-count" class="fs-4 mb-0">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Statistics -->
+                        <div class="additional-stats mb-4">
+                            <h4>Additional Statistics</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Paragraphs
+                                            <span id="paragraph-count" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Average Word Length
+                                            <span id="avg-word-length" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Reading Time (minutes)
+                                            <span id="reading-time" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Lines
+                                            <span id="line-count" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Unique Words
+                                            <span id="unique-word-count" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Speaking Time (minutes)
+                                            <span id="speaking-time" class="badge bg-primary rounded-pill">0</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="actions">
+                            <button id="clear-text" class="btn btn-outline-danger">
+                                <i class="fas fa-trash-alt me-2"></i>Clear Text
+                            </button>
+                            <button id="copy-text" class="btn btn-outline-primary">
+                                <i class="fas fa-copy me-2"></i>Copy Text
+                            </button>
+                            <button id="download-text" class="btn btn-outline-success">
+                                <i class="fas fa-download me-2"></i>Download as TXT
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- How to Use Section -->
+                    <div class="how-to-use mt-5">
+                        <h3>How to Use the Word Counter Tool</h3>
+                        <ol>
+                            <li>Enter or paste your text in the text area above.</li>
+                            <li>The tool will automatically count words, characters, and sentences as you type.</li>
+                            <li>View additional statistics like reading time and unique word count.</li>
+                            <li>Use the buttons to clear, copy, or download your text.</li>
+                        </ol>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq mt-5">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faqOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        How does the word counter calculate reading time?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The reading time is calculated based on an average reading speed of 200-250 words per minute for adults. The tool divides the total word count by 225 to estimate how long it would take to read the text.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faqTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        What counts as a word?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        A word is counted as any sequence of characters separated by spaces or punctuation. Numbers, abbreviations, and symbols are also counted as words if they are separated by spaces.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faqThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Is my text saved or stored?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        No, your text is not saved or stored on our servers. The word counter tool processes your text entirely in your browser, ensuring your privacy and data security.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ad Section - Bottom -->
+                <div class="ad-container text-center my-4">
+                    <div class="ad-placeholder">
+                        <p>Advertisement Space</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Section - Sidebar Top -->
+                <div class="ad-container text-center mb-4">
+                    <div class="ad-placeholder">
+                        <p>Advertisement Space</p>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="sidebar mb-4">
+                    <h4 class="sidebar-title">Related Tools</h4>
+                    <div id="related-tools-container"></div>
+                </div>
+
+                <!-- Popular Tools -->
+                <div class="sidebar">
+                    <h4 class="sidebar-title">Popular Tools</h4>
+                    <ul class="related-tools">
+                        <li><a href="image-to-png.html"><i class="fas fa-file-image me-2"></i> Image to PNG Converter</a></li>
+                        <li><a href="password-generator.html"><i class="fas fa-key me-2"></i> Password Generator</a></li>
+                        <li><a href="qr-code-generator.html"><i class="fas fa-qrcode me-2"></i> QR Code Generator</a></li>
+                        <li><a href="json-formatter.html"><i class="fas fa-code me-2"></i> JSON Formatter</a></li>
+                        <li><a href="color-code-picker.html"><i class="fas fa-palette me-2"></i> Color Code Picker</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ad Section - Sidebar Bottom -->
+                <div class="ad-container text-center mt-4">
+                    <div class="ad-placeholder">
+                        <p>Advertisement Space</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/tools-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const textInput = document.getElementById('text-input');
+            const wordCount = document.getElementById('word-count');
+            const characterCount = document.getElementById('character-count');
+            const characterNoSpacesCount = document.getElementById('character-no-spaces-count');
+            const sentenceCount = document.getElementById('sentence-count');
+            const paragraphCount = document.getElementById('paragraph-count');
+            const lineCount = document.getElementById('line-count');
+            const avgWordLength = document.getElementById('avg-word-length');
+            const uniqueWordCount = document.getElementById('unique-word-count');
+            const readingTime = document.getElementById('reading-time');
+            const speakingTime = document.getElementById('speaking-time');
+            const clearTextBtn = document.getElementById('clear-text');
+            const copyTextBtn = document.getElementById('copy-text');
+            const downloadTextBtn = document.getElementById('download-text');
+            
+            // Update counts on input
+            textInput.addEventListener('input', updateCounts);
+            
+            // Clear text
+            clearTextBtn.addEventListener('click', function() {
+                textInput.value = '';
+                updateCounts();
+            });
+            
+            // Copy text
+            copyTextBtn.addEventListener('click', function() {
+                textInput.select();
+                document.execCommand('copy');
+                
+                // Show feedback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check me-2"></i>Copied!';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+            
+            // Download text
+            downloadTextBtn.addEventListener('click', function() {
+                const text = textInput.value;
+                if (!text) return;
+                
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'text.txt';
+                document.body.appendChild(a);
+                a.click();
+                
+                // Clean up
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Function to update all counts
+            function updateCounts() {
+                const text = textInput.value;
+                
+                // Word count
+                const words = text.trim() ? text.trim().split(/\s+/) : [];
+                wordCount.textContent = words.length;
+                
+                // Character count
+                characterCount.textContent = text.length;
+                
+                // Character count (no spaces)
+                characterNoSpacesCount.textContent = text.replace(/\s/g, '').length;
+                
+                // Sentence count
+                const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
+                sentenceCount.textContent = sentences.length;
+                
+                // Paragraph count
+                const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+                paragraphCount.textContent = paragraphs.length || 1;
+                
+                // Line count
+                const lines = text.split('\n');
+                lineCount.textContent = lines.length;
+                
+                // Average word length
+                if (words.length > 0) {
+                    const totalChars = words.join('').length;
+                    avgWordLength.textContent = (totalChars / words.length).toFixed(1);
+                } else {
+                    avgWordLength.textContent = '0';
+                }
+                
+                // Unique word count
+                const uniqueWords = new Set(words.map(word => word.toLowerCase()));
+                uniqueWordCount.textContent = uniqueWords.size;
+                
+                // Reading time (minutes)
+                const wordsPerMinute = 225;
+                readingTime.textContent = (words.length / wordsPerMinute).toFixed(1);
+                
+                // Speaking time (minutes)
+                const wordsPerMinuteSpeaking = 150;
+                speakingTime.textContent = (words.length / wordsPerMinuteSpeaking).toFixed(1);
+            }
+            
+            // Load related tools
+            renderRelatedTools('word-counter', 'text-tools', 'related-tools-container');
+        });
+    </script>
+</body>
+</html> 
